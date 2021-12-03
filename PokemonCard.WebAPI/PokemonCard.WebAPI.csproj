@@ -213,7 +213,6 @@
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -306,6 +305,20 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PokemonCard.Data\PokemonCard.Data.csproj">
+      <Project>{0e0ae711-a344-4fc5-9927-8176564d2a07}</Project>
+      <Name>PokemonCard.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonCard.Models\PokemonCard.Models.csproj">
+      <Project>{2603c526-328a-4d9d-b228-df59d211e677}</Project>
+      <Name>PokemonCard.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonCard.Services\PokemonCard.Services.csproj">
+      <Project>{5235e7ef-a3b5-46f3-a19d-93c8201af4d1}</Project>
+      <Name>PokemonCard.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCard.WebAPI", "PokemonCard.WebAPI\PokemonCard.WebAPI.csproj", "{57687715-974C-4AC3-861B-23724E11A37C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCard.Data", "PokemonCard.Data\PokemonCard.Data.csproj", "{0E0AE711-A344-4FC5-9927-8176564D2A07}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCard.Models", "PokemonCard.Models\PokemonCard.Models.csproj", "{2603C526-328A-4D9D-B228-DF59D211E677}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PokemonCard.Services", "PokemonCard.Services\PokemonCard.Services.csproj", "{5235E7EF-A3B5-46F3-A19D-93C8201AF4D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +21,18 @@ Global
 		{57687715-974C-4AC3-861B-23724E11A37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57687715-974C-4AC3-861B-23724E11A37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57687715-974C-4AC3-861B-23724E11A37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E0AE711-A344-4FC5-9927-8176564D2A07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E0AE711-A344-4FC5-9927-8176564D2A07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E0AE711-A344-4FC5-9927-8176564D2A07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E0AE711-A344-4FC5-9927-8176564D2A07}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2603C526-328A-4D9D-B228-DF59D211E677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2603C526-328A-4D9D-B228-DF59D211E677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2603C526-328A-4D9D-B228-DF59D211E677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2603C526-328A-4D9D-B228-DF59D211E677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5235E7EF-A3B5-46F3-A19D-93C8201AF4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5235E7EF-A3B5-46F3-A19D-93C8201AF4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5235E7EF-A3B5-46F3-A19D-93C8201AF4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5235E7EF-A3B5-46F3-A19D-93C8201AF4D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

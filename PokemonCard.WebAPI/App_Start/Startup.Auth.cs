@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using PokemonCard.WebAPI.Providers;
 using PokemonCard.WebAPI.Models;
+using PokemonCard.Data;
 
 namespace PokemonCard.WebAPI
 {
