@@ -54,7 +54,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardCreate.cs" />
+    <Compile Include="CardDetail.cs" />
+    <Compile Include="CardEdit.cs" />
+    <Compile Include="CardListItem.cs" />
+    <Compile Include="OwnershipCreate.cs" />
+    <Compile Include="OwnershipDetail.cs" />
+    <Compile Include="OwnershipEdit.cs" />
+    <Compile Include="OwnershipListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetCreate.cs" />
+    <Compile Include="SetDetail.cs" />
+    <Compile Include="SetEdit.cs" />
+    <Compile Include="SetListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
