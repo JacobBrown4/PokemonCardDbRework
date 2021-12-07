@@ -10,13 +10,13 @@ namespace PokemonCard.Data
     public class Ownership
     {
         
-        public int ID { get; set; }
+        public int OwnerID { get; set; }
         [Required]
-        public int SetID { get; set; }
+        public int SetID { get; set; } //do I need these? will they come from Set and Card already? 
         [Required]
-        public int CardID { get; set; }
+        public int CardID { get; set; }// see above 
         [Required]
-        public Card Card { get; set; }
+        public Card Card { get; set; }// see above 
         [Key]
         public Guid Owner { get; set; }
         public DateTimeOffset CreatedUTC { get; set; }

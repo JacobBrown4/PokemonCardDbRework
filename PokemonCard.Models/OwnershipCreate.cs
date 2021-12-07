@@ -11,7 +11,7 @@ namespace PokemonCard.Models
     public class OwnershipCreate
     {
         [Required]
-        public int ID { get; set; }
+        public int OwnerID { get; set; }
         public int SetID { get; set; }
         public int CardID { get; set; }
         public Card Card { get; set; }

@@ -19,7 +19,7 @@ namespace PokemonCard.Services
         {
             var entity = new Ownership()
             {
-                ID = model.ID,
+                OwnerID = model.OwnerID,
                 SetID = model.SetID,
                 CardID = model.CardID,
                 Card = model.Card,
@@ -40,8 +40,7 @@ namespace PokemonCard.Services
                                 .Where(e => e.Owner == _ownderID)
                                 .Select(e => new OwnershipListItem
                                 {
-                                    //OwnerID = e.ID,
-                                    //Owner = e.Owner,
+                                    OwnerID= e.OwnerID,
                                     CreatedUTC = e.CreatedUTC
                                 });
                 return query.ToArray();
