@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace PokemonCard.Data
         [Required]
         public string Name { get; set; }
 
-        [Required]
+        [ForeignKey("Set")]
         public int SetId { get; set; }
 
         [Required]
