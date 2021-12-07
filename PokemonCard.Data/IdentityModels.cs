@@ -34,6 +34,7 @@ namespace PokemonCard.Data
         }
 
         public DbSet<PkmnCard> PkmnCards { get; set; }
+        public DbSet<Ownership> Owners { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

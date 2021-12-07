@@ -63,5 +63,15 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PokemonCard.Data\PokemonCard.Data.csproj">
+      <Project>{0e0ae711-a344-4fc5-9927-8176564d2a07}</Project>
+      <Name>PokemonCard.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokemonCard.Models\PokemonCard.Models.csproj">
+      <Project>{2603c526-328a-4d9d-b228-df59d211e677}</Project>
+      <Name>PokemonCard.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
