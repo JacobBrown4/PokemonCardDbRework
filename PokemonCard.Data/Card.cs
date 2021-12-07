@@ -58,16 +58,16 @@ namespace PokemonCard.Data
         public Set Set { get; set; }
 
         [Required]
-        public Rarity Rarity { get; set; }
-
-        [Required]
-        public bool IsHolo { get; set; }
-        
-        [Required]
         public CardType TypeOfCard { get; set; }
 
         [Required]
+        public bool IsHolo { get; set; }
+
+        [Required]
         public ArtStyle ArtStyle { get; set; }
+
+        [Required]
+        public Rarity Rarity { get; set; }
 
         public Guid OwnerId { get; set; }
     }

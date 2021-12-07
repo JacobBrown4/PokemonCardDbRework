@@ -59,5 +59,42 @@ namespace PokemonCard.Services
             }
         }
 
+        public CardDetail GetCardById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Cards
+                        .Single(e => e.Id == id && e.OwnerId == _userId);
+                    return
+                        new CardDetail
+                        {
+                            Id = entity.Id,
+                            Name = entity.Name,
+                            Set = entity.Set,
+                            TypeOfCard = entity.TypeOfCard,
+                            IsHolo = entity.IsHolo,
+                            ArtStyle = entity.ArtStyle,
+                            Rarity = entity.Rarity
+                        };
+            }
+        }
+
+        public bool DeleteCard(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Cards
+                        .Single(e => e.Id == id && e.OwnerId == _userId);
+
+                ctx.Cards.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+
+            }
+        }
     }
 }

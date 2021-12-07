@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace PokemonCard.Models
 {
-    //Come back to this. Might need to add the enums in the this class instead of pulling from the data library.
     public class CardCreate
     {
         [Required]
