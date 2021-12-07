@@ -33,6 +33,15 @@ namespace PokemonCard.Data
         Supporter,
         Energy
     }
+    
+    public enum ArtStyle
+    {
+        Holo,
+        Reverse_Holo,
+        Full_Art,
+        Half_Art,
+        Normal
+    }
 
     public class Card
     {
@@ -53,8 +62,13 @@ namespace PokemonCard.Data
 
         [Required]
         public bool IsHolo { get; set; }
-
+        
         [Required]
         public CardType TypeOfCard { get; set; }
+
+        [Required]
+        public ArtStyle ArtStyle { get; set; }
+
+        public Guid OwnerId { get; set; }
     }
 }
