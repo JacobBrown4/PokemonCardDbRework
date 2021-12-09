@@ -10,16 +10,16 @@ namespace PokemonCard.Services
 {
     public class OwnershipService
     {
-        private readonly Guid _ownderID;
+        private readonly Guid _ownerID;
         public OwnershipService(Guid ownerID)
         {
-            _ownderID = ownerID;
+            _ownerID = ownerID;
         }
         public bool CreateOwner(OwnershipCreate model)
         {
             var entity = new Ownership()
             {
-                OwnerID = model.OwnerID,
+                //OwnerID = model.OwnerID,
                 SetID = model.SetID,
                 CardID = model.CardID,
                 Card = model.Card,
@@ -37,13 +37,29 @@ namespace PokemonCard.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var query = ctx.Owners
-                                .Where(e => e.Owner == _ownderID)
+                                .Where(e => e.Owner == _ownerID)
                                 .Select(e => new OwnershipListItem
                                 {
                                     OwnerID= e.OwnerID,
                                     CreatedUTC = e.CreatedUTC
                                 });
                 return query.ToArray();
+            }
+        }
+        public OwnershipDetail GetOwnerByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Owners.Single(e => e.OwnerID == id && e.Owner == _ownerID);
+                return new OwnershipDetail
+                {
+                    OwnerID = entity.OwnerID,
+                    SetID = entity.SetID,
+                    CardID = entity.CardID,
+                    CreatedUTC = entity.CreatedUTC,
+                    ModifiedUTC = entity.ModifiedUTC
+
+                };
             }
         }
     }

@@ -11,10 +11,11 @@ namespace PokemonCard.Models
     public class OwnershipCreate
     {
         [Required]
-        public int OwnerID { get; set; }
+        //public int OwnerID { get; set; }
         public int SetID { get; set; }
         public int CardID { get; set; }
         public Card Card { get; set; }
+        //public DateTimeOffset CreatedUTC { get; set; }
 
 
     }
