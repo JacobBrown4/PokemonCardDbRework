@@ -19,7 +19,7 @@ namespace PokemonCard.Services
         {
             var entity = new Ownership()
             {
-                //OwnerID = model.OwnerID,
+                OwnerID = model.OwnerID,
                 SetID = model.SetID,
                 CardID = model.CardID,
                 Card = model.Card,
@@ -60,6 +60,30 @@ namespace PokemonCard.Services
                     ModifiedUTC = entity.ModifiedUTC
 
                 };
+            }
+        }
+        public bool UpdateOwner(OwnershipEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Owners.Single(e => e.OwnerID == model.OwnderID && e.Owner == _ownerID);
+
+                entity.OwnerID = model.OwnderID;
+                entity.SetID = model.SetID;
+                entity.CardID = model.CardID;
+                entity.Card = model.Card;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteOwner (int ownerID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Owners.Single(e => e.OwnerID == ownerID && e.Owner == _ownerID);
+                ctx.Owners.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }
