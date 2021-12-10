@@ -33,7 +33,8 @@ namespace PokemonCard.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<PkmnCard> PkmnCards { get; set; }
+        //public DbSet<PkmnCard> PkmnCards { get; set; }
+        public DbSet<Ownership> Owners { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

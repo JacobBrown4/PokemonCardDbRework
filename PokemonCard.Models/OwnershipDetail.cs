@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,5 +9,12 @@ namespace PokemonCard.Models
 {
     public class OwnershipDetail
     {
+        public int OwnerID { get; set;  }
+        public int SetID { get; set; }
+        public int CardID { get; set; }
+        [Display(Name ="Created")]
+        public DateTimeOffset CreatedUTC { get; set; }
+        [Display(Name ="Modified")]
+        public DateTimeOffset? ModifiedUTC { get; set; }
     }
 }
