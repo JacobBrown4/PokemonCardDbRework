@@ -8,5 +8,7 @@ namespace PokemonCard.Models
 {
     public class CardListItem
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
