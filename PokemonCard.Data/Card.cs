@@ -56,7 +56,7 @@ namespace PokemonCard.Data
         public int SetId { get; set; }
 
         [Required]
-        public Set Set { get; set; }
+        public PokemonSet Set { get; set; }
 
         [Required]
         public CardType TypeOfCard { get; set; }
