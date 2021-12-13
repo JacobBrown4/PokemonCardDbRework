@@ -10,15 +10,15 @@ namespace PokemonCard.Data
 {
     public class Ownership
     {
-        [Required]
+        [Key]
         public int OwnerID { get; set; }
-        [Required] //foreign key will go here probably
-        public int SetID { get; set; } //do I need these? will they come from Set and Card already? 
+        
+       
         [Required] //foreign key will go here probably 
         public int CardID { get; set; }// see above 
+        
+        public virtual Card Card { get; set; }// see above 
         [Required]
-        public Card Card { get; set; }// see above 
-        [Key]
         public Guid Owner { get; set; }
         public DateTimeOffset CreatedUTC { get; set; }
         public DateTimeOffset? ModifiedUTC { get; set; }

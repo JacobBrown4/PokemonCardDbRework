@@ -51,11 +51,11 @@ namespace PokemonCard.Data
 
         [Required]
         public string Name { get; set; }
-
-        [ForeignKey("Set")]
+        [Required]
         public int SetId { get; set; }
 
-        [Required]
+        
+        [ForeignKey("SetId")]
         public PokemonSet Set { get; set; }
 
         [Required]

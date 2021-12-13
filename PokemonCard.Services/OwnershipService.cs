@@ -19,8 +19,8 @@ namespace PokemonCard.Services
         {
             var entity = new Ownership()
             {
-                OwnerID = model.OwnerID,
-                SetID = model.SetID,
+                Owner =_ownerID,
+                
                 CardID = model.CardID,
                 Card = model.Card,
                 CreatedUTC = DateTimeOffset.Now
@@ -54,8 +54,12 @@ namespace PokemonCard.Services
                 return new OwnershipDetail
                 {
                     OwnerID = entity.OwnerID,
-                    SetID = entity.SetID,
+                    
+                    CardName = entity.Card.Name,
                     CardID = entity.CardID,
+                    CardRarity = entity.Card.Rarity,
+                    SetName =entity.Card.Set.NameOfSet, //goes into the card then the set and pull the name of the set. (can pull all kinds of stuff with the Set
+                    SetAbv = entity.Card.Set.SetAbbr,
                     CreatedUTC = entity.CreatedUTC,
                     ModifiedUTC = entity.ModifiedUTC
 
@@ -69,7 +73,7 @@ namespace PokemonCard.Services
                 var entity = ctx.Owners.Single(e => e.OwnerID == model.OwnderID && e.Owner == _ownerID);
 
                 entity.OwnerID = model.OwnderID;
-                entity.SetID = model.SetID;
+                
                 entity.CardID = model.CardID;
                 entity.Card = model.Card;
 

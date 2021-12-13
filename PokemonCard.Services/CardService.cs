@@ -25,7 +25,7 @@ namespace PokemonCard.Services
                 {
                     OwnerId = _userId,
                     Name = model.Name,
-                    Set = model.Set,
+                    SetId = model.SetId,
                     TypeOfCard = model.TypeOfCard,
                     Rarity = model.Rarity,
                     ArtStyle = model.ArtStyle
