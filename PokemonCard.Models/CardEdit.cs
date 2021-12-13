@@ -11,7 +11,7 @@ namespace PokemonCard.Models
     {
         public string Name { get; set; }
         public int SetId { get; set; }
-        public Set Set { get; set; }
+        public PokemonSet Set { get; set; }
         public CardType TypeOfCard { get; set; }
         public bool IsHolo { get; set; }
         public ArtStyle ArtStyle { get; set; }
