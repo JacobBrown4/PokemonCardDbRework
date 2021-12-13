@@ -8,5 +8,12 @@ namespace PokemonCard.Models
 {
     public class SetDetail
     {
+        public int SetId { get; set; }
+        public string NameOfSet { get; set; }
+        public string SetAbbr { get; set; }
+        public DateTime YearReleased { get; set; }
+        public int Rares { get; set; }
+        public int Uncommons { get; set; }
+        public int Commons { get; set; }
     }
 }
