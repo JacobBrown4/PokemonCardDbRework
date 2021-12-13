@@ -80,6 +80,23 @@ namespace PokemonCard.Services
                         };
             }
         }
+        public bool UpdateCard (CardEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Cards.Single(e => e.Name == model.Name && e.OwnerId == _userId);
+                entity.Name = model.Name;
+                entity.SetId = model.SetId;
+                entity.Set = model.Set;
+                entity.TypeOfCard = model.TypeOfCard;
+                entity.IsHolo = model.IsHolo;
+                entity.ArtStyle = model.ArtStyle;
+                entity.Rarity = model.Rarity;
+                entity.OwnerId = model.OwnerId;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
         public bool DeleteCard(int id)
         {

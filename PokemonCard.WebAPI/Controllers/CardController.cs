@@ -46,7 +46,6 @@ namespace PokemonCard.WebAPI.Controllers
 
             return Ok();
         }
-
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCardService();
