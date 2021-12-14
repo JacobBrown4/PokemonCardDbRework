@@ -64,6 +64,9 @@
     <Compile Include="CardDetail.cs" />
     <Compile Include="CardEdit.cs" />
     <Compile Include="CardListItem.cs" />
+    <Compile Include="ItemCreate.cs" />
+    <Compile Include="ItemDetail.cs" />
+    <Compile Include="ItemEdit.cs" />
     <Compile Include="OwnershipCreate.cs" />
     <Compile Include="OwnershipDetail.cs" />
     <Compile Include="OwnershipEdit.cs" />
@@ -73,6 +76,15 @@
     <Compile Include="SetCreate.cs" />
     <Compile Include="SetDetail.cs" />
     <Compile Include="SetEdit.cs" />
+    <Compile Include="StadiumCreate.cs" />
+    <Compile Include="StadiumDetail.cs" />
+    <Compile Include="StadiumEdit.cs" />
+    <Compile Include="SupporterCreate.cs" />
+    <Compile Include="SupporterDetail.cs" />
+    <Compile Include="SupporterEdit.cs" />
+    <Compile Include="ToolCreate.cs" />
+    <Compile Include="ToolDetail.cs" />
+    <Compile Include="ToolEdit.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
