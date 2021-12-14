@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -51,23 +53,28 @@ namespace PokemonCard.Data
 
         [Required]
         public string Name { get; set; }
-        //[Required]
+
+        
         [ForeignKey("Set")]
+
         public int SetId { get; set; }
 
         
         public virtual PokemonSet Set { get; set; }
 
         [Required]
+        [JsonConverter(typeof(StringEnumConverter))]
         public CardType TypeOfCard { get; set; }
 
         [Required]
         public bool IsHolo { get; set; }
 
         [Required]
+        [JsonConverter(typeof(StringEnumConverter))]
         public ArtStyle ArtStyle { get; set; }
 
         [Required]
+        [JsonConverter(typeof(StringEnumConverter))]
         public Rarity Rarity { get; set; }
 
         public Guid OwnerId { get; set; }
