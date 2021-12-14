@@ -12,14 +12,14 @@ namespace PokemonCard.Data
     {
         [Key]
         public int OwnerID { get; set; }
-        
-       
-        [Required] //foreign key will go here probably 
+        [Required]
+        public Guid Owner { get; set; }
+
+        [Required]
         public int CardID { get; set; }// see above 
         
         public virtual Card Card { get; set; }// see above 
-        [Required]
-        public Guid Owner { get; set; }
+
         public DateTimeOffset CreatedUTC { get; set; }
         public DateTimeOffset? ModifiedUTC { get; set; }
     }

@@ -53,8 +53,7 @@ namespace PokemonCard.Services
                 var entity = ctx.Owners.Single(e => e.OwnerID == id && e.Owner == _ownerID);
                 return new OwnershipDetail
                 {
-                    OwnerID = entity.OwnerID,
-                    
+                    OwnerID = entity.OwnerID,                    
                     CardName = entity.Card.Name,
                     CardID = entity.CardID,
                     CardRarity = entity.Card.Rarity,
@@ -73,7 +72,7 @@ namespace PokemonCard.Services
                 var entity = ctx.Owners.Single(e => e.OwnerID == model.OwnderID && e.Owner == _ownerID);
 
                 entity.OwnerID = model.OwnderID;
-                
+                entity.Card.Set.SetId = model.Card.Set.SetId;
                 entity.CardID = model.CardID;
                 entity.Card = model.Card;
 

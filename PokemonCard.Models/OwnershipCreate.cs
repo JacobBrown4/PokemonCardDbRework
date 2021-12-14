@@ -12,7 +12,7 @@ namespace PokemonCard.Models
     {
         [Required]
         public int OwnerID { get; set; }
-        public int SetID { get; set; }
+        
         public int CardID { get; set; }
         public Card Card { get; set; }
         
