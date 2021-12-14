@@ -89,6 +89,19 @@
   <ItemGroup>
     <Compile Include="Card.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202112131721520_InitialCreate.cs" />
+    <Compile Include="Migrations\202112131721520_InitialCreate.designer.cs">
+      <DependentUpon>202112131721520_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112141521123_trying a fix.cs" />
+    <Compile Include="Migrations\202112141521123_trying a fix.designer.cs">
+      <DependentUpon>202112141521123_trying a fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112141537273_trying to fix.cs" />
+    <Compile Include="Migrations\202112141537273_trying to fix.designer.cs">
+      <DependentUpon>202112141537273_trying to fix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Ownership.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Set.cs" />
@@ -96,6 +109,17 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202112131721520_InitialCreate.resx">
+      <DependentUpon>202112131721520_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112141521123_trying a fix.resx">
+      <DependentUpon>202112141521123_trying a fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112141537273_trying to fix.resx">
+      <DependentUpon>202112141537273_trying to fix.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

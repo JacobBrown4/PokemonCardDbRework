@@ -54,11 +54,13 @@ namespace PokemonCard.Data
         [Required]
         public string Name { get; set; }
 
-        [Required]
+        
+        [ForeignKey("Set")]
+
         public int SetId { get; set; }
 
-        [Required]
-        public PokemonSet Set { get; set; }
+        
+        public virtual PokemonSet Set { get; set; }
 
         [Required]
         [JsonConverter(typeof(StringEnumConverter))]

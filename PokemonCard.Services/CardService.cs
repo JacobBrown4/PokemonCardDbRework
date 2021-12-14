@@ -25,7 +25,9 @@ namespace PokemonCard.Services
                 {
                     OwnerId = _userId,
                     Name = model.Name,
-                    //SetId = model.SetId,
+
+                    SetId = model.SetId,                    
+
                     TypeOfCard = model.TypeOfCard,
                     Rarity = model.Rarity,
                     ArtStyle = model.ArtStyle
@@ -67,12 +69,14 @@ namespace PokemonCard.Services
                     ctx
                         .Cards
                         .Single(e => e.Id == id && e.OwnerId == _userId);
+                var set =
+                    ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
                     return
                         new CardDetail
                         {
                             Id = entity.Id,
-                            Name = entity.Name,
-                            Set = entity.Set,
+                            Name = entity.Name,                            
+                            Set = set,
                             TypeOfCard = entity.TypeOfCard,
                             IsHolo = entity.IsHolo,
                             ArtStyle = entity.ArtStyle,
