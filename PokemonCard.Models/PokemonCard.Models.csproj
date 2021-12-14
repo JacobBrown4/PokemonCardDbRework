@@ -71,6 +71,9 @@
     <Compile Include="OwnershipDetail.cs" />
     <Compile Include="OwnershipEdit.cs" />
     <Compile Include="OwnershipListItem.cs" />
+    <Compile Include="PokemonDetail.cs" />
+    <Compile Include="PokemoneCreate.cs" />
+    <Compile Include="PokemonEdit.cs" />
     <Compile Include="PokemonSetListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCreate.cs" />
