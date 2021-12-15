@@ -13,6 +13,7 @@ namespace PokemonCard.Models
         public int OwnerID { get; set; }
        
         public int CardID { get; set; }
+        public Card Card { get; set; }
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUTC { get; set; }
         [Display(Name = "Modified")]

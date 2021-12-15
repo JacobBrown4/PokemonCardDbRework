@@ -9,6 +9,7 @@ namespace PokemonCard.Models
 {
     public class CardEdit
     {
+        public int Id { get; set; }
         public string Name { get; set; }
         public int SetId { get; set; }
         public PokemonSet Set { get; set; }

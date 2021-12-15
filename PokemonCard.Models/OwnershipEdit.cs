@@ -9,7 +9,7 @@ namespace PokemonCard.Models
 {
     public class OwnershipEdit
     {
-        public int OwnderID { get; set; }
+        public int OwnerID { get; set; }
         public int SetID { get; set; }
         public int CardID { get; set; }
         public Card Card { get; set; }
