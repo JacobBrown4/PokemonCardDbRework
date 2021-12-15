@@ -25,6 +25,7 @@ namespace PokemonCard.Services
                 Name = model.Name,
                 SetId = model.SetId,
                 Rarity = model.Rarity,
+                TypeOfCard = model.TypeOfCard,
                 ArtStyle = model.ArtStyle,
                 IsHolo = model.IsHolo,
                 ToolAbility = model.ToolAbility,

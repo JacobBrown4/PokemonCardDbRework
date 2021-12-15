@@ -21,11 +21,13 @@ namespace PokemonCard.Services
         {
             var entity = new Item()
             {
+
                 OwnerId = _userID,
                 Name = model.Name,
                 SetId = model.SetId,
                 Rarity = model.Rarity,                
                 ArtStyle = model.ArtStyle,
+                TypeOfCard = model.TypeOfCard,
                 IsHolo = model.IsHolo,
                 ItemAbility = model.ItemAbility,
 

@@ -87,6 +87,8 @@ namespace PokemonCard.Services
             using (var ctx = new ApplicationDbContext())
             {
                 var entity = ctx.Cards.Single(e => e.Name == model.Name && e.OwnerId == _userId);
+                var set =
+                    ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
                 entity.Name = model.Name;
                 entity.SetId = model.SetId;
                 entity.Set = model.Set;

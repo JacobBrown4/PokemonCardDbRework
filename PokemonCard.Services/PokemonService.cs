@@ -26,6 +26,7 @@ namespace PokemonCard.Services
                 {
                     OwnerId = _userId,
                     Name = model.Name,
+                    TypeOfCard = model.TypeOfCard,
                     SetId = model.SetId,
                     PokemonType = model.PokemonType,
                     Evolves = model.Evolves,

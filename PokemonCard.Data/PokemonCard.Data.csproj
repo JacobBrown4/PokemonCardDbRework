@@ -102,6 +102,10 @@
     <Compile Include="Migrations\202112141537273_trying to fix.designer.cs">
       <DependentUpon>202112141537273_trying to fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112151833278_added some stuff.cs" />
+    <Compile Include="Migrations\202112151833278_added some stuff.designer.cs">
+      <DependentUpon>202112151833278_added some stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Ownership.cs" />
     <Compile Include="Pokemon.cs" />
@@ -124,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112141537273_trying to fix.resx">
       <DependentUpon>202112141537273_trying to fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112151833278_added some stuff.resx">
+      <DependentUpon>202112151833278_added some stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
