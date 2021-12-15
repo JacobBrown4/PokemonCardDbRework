@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokemonCard.Models
 {
-    public class PokemonEdit
+    public class PokemonEdit : CardEdit
     {
         public PokemonType PokemonType { get; set; }
         public bool Evolves { get; set; }

@@ -36,6 +36,14 @@ namespace PokemonCard.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<ItemListItem> GetItems()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Items.Where(e => e.OwnerId == _userID).Select(e => new ItemListItem { Id = e.Id, Name = e.Name });
+                return query.ToArray();
+            }
+        }
         public ItemDetail GetItemByID(int id)
         {
             using (var ctx = new ApplicationDbContext())

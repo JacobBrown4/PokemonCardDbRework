@@ -67,13 +67,15 @@
     <Compile Include="ItemCreate.cs" />
     <Compile Include="ItemDetail.cs" />
     <Compile Include="ItemEdit.cs" />
+    <Compile Include="ItemListItem.cs" />
     <Compile Include="OwnershipCreate.cs" />
     <Compile Include="OwnershipDetail.cs" />
     <Compile Include="OwnershipEdit.cs" />
     <Compile Include="OwnershipListItem.cs" />
     <Compile Include="PokemonDetail.cs" />
-    <Compile Include="PokemoneCreate.cs" />
+    <Compile Include="PokemonCreate.cs" />
     <Compile Include="PokemonEdit.cs" />
+    <Compile Include="PokemonListItem.cs" />
     <Compile Include="PokemonSetListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SetCreate.cs" />
@@ -82,12 +84,15 @@
     <Compile Include="StadiumCreate.cs" />
     <Compile Include="StadiumDetail.cs" />
     <Compile Include="StadiumEdit.cs" />
+    <Compile Include="StadiumListItem.cs" />
     <Compile Include="SupporterCreate.cs" />
     <Compile Include="SupporterDetail.cs" />
     <Compile Include="SupporterEdit.cs" />
+    <Compile Include="SupporterListItem.cs" />
     <Compile Include="ToolCreate.cs" />
     <Compile Include="ToolDetail.cs" />
     <Compile Include="ToolEdit.cs" />
+    <Compile Include="ToolListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

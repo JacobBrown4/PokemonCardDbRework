@@ -36,6 +36,14 @@ namespace PokemonCard.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+        public IEnumerable<ToolListItem> GetTools()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.Tools.Where(e => e.OwnerId == _userID).Select(e => new ToolListItem { Id = e.Id, Name = e.Name });
+                return query.ToArray();
+            }
+        }
         public ToolDetail GetToolByID(int id)
         {
             using (var ctx = new ApplicationDbContext())
