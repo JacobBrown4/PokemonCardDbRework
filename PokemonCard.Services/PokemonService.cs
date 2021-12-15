@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonCard.Models
+namespace PokemonCard.Services
 {
-    public class ItemCreate : CardCreate
+    public class PokemonService
     {
-        public string ItemAbility { get; set; }
     }
 }

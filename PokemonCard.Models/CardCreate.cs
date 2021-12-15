@@ -16,6 +16,7 @@ namespace PokemonCard.Models
         public int SetId { get; set; }
         public PokemonSet Set { get; set; }
         public CardType TypeOfCard { get; set; }
+        public bool IsHolo { get; set; }
         public Rarity Rarity {get; set;}
         public ArtStyle ArtStyle { get; set; }
     }

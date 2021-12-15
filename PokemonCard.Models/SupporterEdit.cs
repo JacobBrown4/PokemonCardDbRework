@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonCard.Models
 {
-    class SupporterEdit : CardEdit
+    public class SupporterEdit : CardEdit
     {
         public string SupporterAbility { get; set; }
     }
