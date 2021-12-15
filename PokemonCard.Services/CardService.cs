@@ -66,7 +66,7 @@ namespace PokemonCard.Services
                 var entity =
                     ctx
                         .Cards
-                        .Single(e => e.Id == id && e.OwnerId == _userId);
+                        .Single(e => e.Id == id );
                 var set =
                     ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
                     return
@@ -86,12 +86,13 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Cards.Single(e => e.Name == model.Name && e.OwnerId == _userId);
+                var entity = ctx.Cards.Single(e => e.Id == model.Id );
                 var set =
                     ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
+
                 entity.Name = model.Name;
                 entity.SetId = model.SetId;
-                entity.Set = model.Set;
+                entity.Set = set;
                 entity.TypeOfCard = model.TypeOfCard;
                 entity.IsHolo = model.IsHolo;
                 entity.ArtStyle = model.ArtStyle;

@@ -10,7 +10,10 @@ namespace PokemonCard.Models
 {
     public class CardCreate
     {
+        
         [Required]
+        public int Id { get; set; }
+
         [MaxLength(100, ErrorMessage = "Name is too long")]
         public string Name { get; set; }
         public int SetId { get; set; }
