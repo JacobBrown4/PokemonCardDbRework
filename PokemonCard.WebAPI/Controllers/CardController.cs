@@ -46,6 +46,19 @@ namespace PokemonCard.WebAPI.Controllers
 
             return Ok();
         }
+        public IHttpActionResult Put(CardEdit card)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var service = CreateCardService();
+
+            if (!service.UpdateCard(card))
+                return InternalServerError();
+
+            return Ok();
+        }
+
         public IHttpActionResult Delete(int id)
         {
             var service = CreateCardService();

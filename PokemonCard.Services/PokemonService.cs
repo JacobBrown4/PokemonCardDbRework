@@ -1,5 +1,4 @@
-﻿
-using PokemonCard.Data;
+﻿using PokemonCard.Data;
 using PokemonCard.Models;
 using System;
 using System.Collections.Generic;
@@ -9,46 +8,52 @@ using System.Threading.Tasks;
 
 namespace PokemonCard.Services
 {
-    public class CardService
+    public class PokemonService
     {
         private readonly Guid _userId;
 
-        public CardService(Guid userId)
+        
+
+        public PokemonService(Guid userId)
         {
             _userId = userId;
         }
 
-        public bool CreateCard(CardCreate model)
+        public bool CreatePokemon(PokemonCreate model)
         {
             var entity =
-                new Card()
+                new Pokemon()
                 {
                     OwnerId = _userId,
                     Name = model.Name,
-                    SetId = model.SetId,
                     TypeOfCard = model.TypeOfCard,
+                    SetId = model.SetId,
+                    PokemonType = model.PokemonType,
+                    Evolves = model.Evolves,
+                    Attack1 = model.Attack1,
+                    Attack2 = model.Attack2,                    
                     Rarity = model.Rarity,
                     ArtStyle = model.ArtStyle
                 };
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Cards.Add(entity);
+                ctx.Pokemons.Add(entity);
                 return ctx.SaveChanges() == 1;
             }
-        } 
-        
-        public IEnumerable<CardListItem> GetCards()
+        }
+
+        public IEnumerable<PokemonListItem> GetPokemons()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .Cards
+                        .Pokemons
                         .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
-                                new CardListItem
+                                new PokemonListItem
                                 {
                                     Id = e.Id,
                                     Name = e.Name
@@ -59,41 +64,44 @@ namespace PokemonCard.Services
             }
         }
 
-        public CardDetail GetCardById(int id)
+        public PokemonDetail GetPokemonById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Cards
-                        .Single(e => e.Id == id );
+                        .Pokemons
+                        .Single(e => e.Id == id && e.OwnerId == _userId);
                 var set =
                     ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
-                    return
-                        new CardDetail
-                        {
-                            Id = entity.Id,
-                            Name = entity.Name,                            
-                            Set = set,
-                            TypeOfCard = entity.TypeOfCard,
-                            IsHolo = entity.IsHolo,
-                            ArtStyle = entity.ArtStyle,
-                            Rarity = entity.Rarity
-                        };
+                return
+                    new PokemonDetail
+                    {
+                        Id = entity.Id,
+                        Name = entity.Name,
+                        Set = set,
+                        PokemonType = entity.PokemonType,
+                        Evolves = entity.Evolves,
+                        Attack1 = entity.Attack1,
+                        Attack2 = entity.Attack2,                        
+                        IsHolo = entity.IsHolo,
+                        ArtStyle = entity.ArtStyle,
+                        Rarity = entity.Rarity
+                    };
             }
         }
-        public bool UpdateCard (CardEdit model)
+        public bool UpdatePokemon(PokemonEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Cards.Single(e => e.Id == model.Id );
-                var set =
-                    ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
-
+                var entity = ctx.Pokemons.Single(e => e.Name == model.Name && e.OwnerId == _userId);
                 entity.Name = model.Name;
                 entity.SetId = model.SetId;
-                entity.Set = set;
-                entity.TypeOfCard = model.TypeOfCard;
+                entity.Set = model.Set;
+                entity.PokemonType = model.PokemonType;
+                entity.Evolves = model.Evolves;
+                entity.Attack1 = model.Attack1;
+                entity.Attack2 = model.Attack2;                
                 entity.IsHolo = model.IsHolo;
                 entity.ArtStyle = model.ArtStyle;
                 entity.Rarity = model.Rarity;
@@ -103,16 +111,16 @@ namespace PokemonCard.Services
             }
         }
 
-        public bool DeleteCard(int id)
+        public bool DeletePokemon(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .Cards
+                        .Pokemons
                         .Single(e => e.Id == id && e.OwnerId == _userId);
 
-                ctx.Cards.Remove(entity);
+                ctx.Pokemons.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
 

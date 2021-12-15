@@ -14,7 +14,7 @@ namespace PokemonCard.Data
         public int OwnerID { get; set; }
         [Required]
         public Guid Owner { get; set; }
-
+        [ForeignKey("Card")]
         [Required]
         public int CardID { get; set; }// see above 
         
