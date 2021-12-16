@@ -8,7 +8,7 @@ Once all three completed tables were merged onto develop, we then did some more 
 It was at this point where we faced the most hardships. There was anger... There was tears... There was frustration...
 Once the God(s) above graced us with compassion and blessings....and Justin Scroggins... we were able to complete the testing and merge the develop branch onto the master.
 
-Listen I'm gonna be honest with you, in the begining of the project, it looked like we could possibly finish everything with ease including our stretch goals. 
+Listen I'm gonna be honest with you, in the beginning of the project, it looked like we could possibly finish everything with ease including our stretch goals. 
 But as time went on...look we are blessed to have finished our MVP's...
 
 As for the code itself, it's a Web Api that allows users to create different pokemon cards, sets, and owners for a database. 
