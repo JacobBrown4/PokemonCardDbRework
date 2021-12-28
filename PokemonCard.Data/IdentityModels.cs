@@ -35,7 +35,7 @@ namespace PokemonCard.Data
 
 
         public DbSet<Card> Cards { get; set; }
-        public DbSet<Ownership> Owners { get; set; }
+        public DbSet<Ownership> Ownerships { get; set; }
         public DbSet<PokemonSet> PokemonSets { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Pokemon> Pokemons { get; set; }

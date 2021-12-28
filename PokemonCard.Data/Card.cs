@@ -77,6 +77,5 @@ namespace PokemonCard.Data
         [JsonConverter(typeof(StringEnumConverter))]
         public Rarity Rarity { get; set; }
 
-        public Guid OwnerId { get; set; }
     }
 }

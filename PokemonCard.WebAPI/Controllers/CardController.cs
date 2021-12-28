@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using PokemonCard.Data;
 using PokemonCard.Models;
 using PokemonCard.Services;
 using System;
@@ -11,6 +12,7 @@ using System.Web.Http;
 namespace PokemonCard.WebAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/card")]
     public class CardController : ApiController
     {
         private CardService CreateCardService()
@@ -26,37 +28,38 @@ namespace PokemonCard.WebAPI.Controllers
             var cards = cardService.GetCards();
             return Ok(cards);
         }
-
+        [Route("alphabetical")]
+        public IHttpActionResult GetByName()
+        {
+            CardService cardService = CreateCardService();
+            var cards = cardService.GetCardsByName();
+            return Ok(cards);
+        }
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
             CardService cardService = CreateCardService();
             var card = cardService.GetCardById(id);
             return Ok(card);
         }
-
-        public IHttpActionResult Post(CardCreate card)
+        [Route("holo")]
+        public IHttpActionResult GetHolos()
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateCardService();
-
-            if (!service.CreateCard(card))
-                return InternalServerError();
-
-            return Ok();
+            CardService cardService = CreateCardService();
+            var card = cardService.GetHolos();
+            return Ok(card);
         }
-        public IHttpActionResult Put(CardEdit card)
+        [Route("byrarity/{rarity}")]
+        public IHttpActionResult GetByRarity(string rarity)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            var service = CreateCardService();
-
-            if (!service.UpdateCard(card))
-                return InternalServerError();
-
-            return Ok();
+            Rarity result;
+            if (Enum.TryParse<Rarity>(rarity, out result))
+            {
+                CardService cardService = CreateCardService();
+                var cards = cardService.GetCardsByRarity(result);
+                return Ok(cards);
+            }
+            return BadRequest("Rarity type not found");
         }
 
         public IHttpActionResult Delete(int id)

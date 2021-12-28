@@ -24,9 +24,8 @@ namespace PokemonCard.Services
             var entity =
                 new Pokemon()
                 {
-                    OwnerId = _userId,
                     Name = model.Name,
-                    TypeOfCard = model.TypeOfCard,
+                    TypeOfCard = CardType.Pokemon,
                     SetId = model.SetId,
                     PokemonType = model.PokemonType,
                     Evolves = model.Evolves,
@@ -50,13 +49,33 @@ namespace PokemonCard.Services
                 var query =
                     ctx
                         .Pokemons
-                        .Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new PokemonListItem
                                 {
                                     Id = e.Id,
-                                    Name = e.Name
+                                    Name = e.Name,
+                                    CardType = e.TypeOfCard
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<PokemonListItem> GetPokemonsByRarity(Rarity rarity)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Pokemons.Where(x=> x.Rarity == rarity)
+                        .Select(
+                            e =>
+                                new PokemonListItem
+                                {
+                                    Id = e.Id,
+                                    Name = e.Name,
+                                    CardType = e.TypeOfCard
                                 }
                         );
 
@@ -71,19 +90,24 @@ namespace PokemonCard.Services
                 var entity =
                     ctx
                         .Pokemons
-                        .Single(e => e.Id == id && e.OwnerId == _userId);
-                var set =
-                    ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
+                        .Single(e => e.Id == id);
                 return
                     new PokemonDetail
                     {
                         Id = entity.Id,
                         Name = entity.Name,
-                        Set = set,
+                        Set = new PokemonSetListItem()
+                        {
+                            SetId = entity.SetId,
+                            NameOfSet = entity.Set.NameOfSet,
+                            SetAbbr = entity.Set.SetAbbr,
+                            YearReleased = entity.Set.YearReleased,
+                            TotalCards = entity.Set.UncommonCount + entity.Set.RareCount + entity.Set.CommonCount,
+                        },
                         PokemonType = entity.PokemonType,
                         Evolves = entity.Evolves,
                         Attack1 = entity.Attack1,
-                        Attack2 = entity.Attack2,                        
+                        Attack2 = entity.Attack2,                               TypeOfCard = entity.TypeOfCard,
                         IsHolo = entity.IsHolo,
                         ArtStyle = entity.ArtStyle,
                         Rarity = entity.Rarity
@@ -94,10 +118,9 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Pokemons.Single(e => e.Name == model.Name && e.OwnerId == _userId);
+                var entity = ctx.Pokemons.Single(e => e.Name == model.Name);
                 entity.Name = model.Name;
                 entity.SetId = model.SetId;
-                entity.Set = model.Set;
                 entity.PokemonType = model.PokemonType;
                 entity.Evolves = model.Evolves;
                 entity.Attack1 = model.Attack1;
@@ -105,7 +128,6 @@ namespace PokemonCard.Services
                 entity.IsHolo = model.IsHolo;
                 entity.ArtStyle = model.ArtStyle;
                 entity.Rarity = model.Rarity;
-                entity.OwnerId = model.OwnerId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -118,7 +140,7 @@ namespace PokemonCard.Services
                 var entity =
                     ctx
                         .Pokemons
-                        .Single(e => e.Id == id && e.OwnerId == _userId);
+                        .Single(e => e.Id == id);
 
                 ctx.Pokemons.Remove(entity);
 

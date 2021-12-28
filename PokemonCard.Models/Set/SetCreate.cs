@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokemonCard.Data
+namespace PokemonCard.Models
 {
-    public class PokemonSet
+    public class SetCreate
     {
-        [Key]
-        public int SetId { get; set; } // Order that the set was released in
         [Required]
         public string NameOfSet { get; set; }
         [Required]
@@ -23,7 +21,5 @@ namespace PokemonCard.Data
         public int UncommonCount { get; set; }
         [Required]
         public int CommonCount { get; set; }
-        public virtual List<Card> Cards { get; set; }
-
     }
 }

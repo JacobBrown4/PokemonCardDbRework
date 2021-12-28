@@ -21,12 +21,11 @@ namespace PokemonCard.Services
         {
             var entity = new Stadium()
             {
-                OwnerId = _userID,
                 Name = model.Name,
                 SetId = model.SetId,
                 Rarity = model.Rarity,
                 ArtStyle = model.ArtStyle,
-                TypeOfCard = model.TypeOfCard,
+                TypeOfCard = CardType.Stadium,
                 IsHolo = model.IsHolo,
                 StadiumAbility = model.StadiumAbility,
 
@@ -41,7 +40,27 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.Stadiums.Where(e => e.OwnerId == _userID).Select(e => new StadiumListItem { Id = e.Id, Name = e.Name });
+                var query = ctx.Stadiums.Select(e => new StadiumListItem { Id = e.Id, Name = e.Name });
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<StadiumListItem> GetStadiumsByRarity(Rarity rarity)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Stadiums.Where(x => x.Rarity == rarity)
+                        .Select(
+                            e =>
+                                new StadiumListItem
+                                {
+                                    Id = e.Id,
+                                    Name = e.Name,
+                                    CardType = e.TypeOfCard
+                                }
+                        );
+
                 return query.ToArray();
             }
         }
@@ -49,17 +68,24 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Stadiums.Single(e => e.Id == id && e.OwnerId == _userID);
-                var set = ctx.PokemonSets.Single(e => e.SetId == entity.SetId);
+                var entity = ctx.Stadiums.Single(e => e.Id == id);
                 return new StadiumDetail
                 {
                     Id = entity.Id,
                     Name = entity.Name,
-                    Set = set,
+                    Set = new PokemonSetListItem()
+                    {
+                        SetId = entity.SetId,
+                        NameOfSet = entity.Set.NameOfSet,
+                        SetAbbr = entity.Set.SetAbbr,
+                        YearReleased = entity.Set.YearReleased,
+                        TotalCards = entity.Set.UncommonCount + entity.Set.RareCount + entity.Set.CommonCount,
+                    },
                     StadiumAbility = entity.StadiumAbility,
                     ArtStyle = entity.ArtStyle,
                     IsHolo = entity.IsHolo,
-                    Rarity = entity.Rarity
+                    Rarity = entity.Rarity,
+                    TypeOfCard = entity.TypeOfCard,
                 };
             }
         }
@@ -67,14 +93,13 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Stadiums.Single(e => e.Name == model.Name && e.OwnerId == _userID);
+                var entity = ctx.Stadiums.Single(e => e.Name == model.Name);
                 entity.Name = model.Name;
-                entity.Set = model.Set;
+                entity.SetId = model.SetId;
                 entity.StadiumAbility = model.StadiumAbility;
                 entity.ArtStyle = model.ArtStyle;
                 entity.IsHolo = model.IsHolo;
                 entity.Rarity = model.Rarity;
-                entity.OwnerId = model.OwnerId;
 
                 return ctx.SaveChanges() == 1;
             }
@@ -83,7 +108,7 @@ namespace PokemonCard.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Stadiums.Single(e => e.Id == id && e.OwnerId == _userID);
+                var entity = ctx.Stadiums.Single(e => e.Id == id);
                 ctx.Stadiums.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using PokemonCard.Data;
 using PokemonCard.Models;
 using PokemonCard.Services;
 using System;
@@ -10,6 +11,8 @@ using System.Web.Http;
 
 namespace PokemonCard.WebAPI.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/stadium")]
     public class StadiumController : ApiController
     {
         private StadiumService CreateStadiumService()
@@ -24,6 +27,19 @@ namespace PokemonCard.WebAPI.Controllers
             var stadiums = stadiumService.GetStadiums();
             return Ok(stadiums);
         }
+        [Route("byrarity/{rarity}")]
+        public IHttpActionResult GetByRarity(string rarity)
+        {
+            Rarity result;
+            if (Enum.TryParse<Rarity>(rarity, out result))
+            {
+                StadiumService stadiumService = CreateStadiumService();
+                var stadiums = stadiumService.GetStadiumsByRarity(result);
+                return Ok(stadiums);
+            }
+            return BadRequest("Rarity type not found");
+        }
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
             StadiumService stadiumService = CreateStadiumService();

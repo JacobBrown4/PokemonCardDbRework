@@ -10,6 +10,8 @@ using System.Web.Http;
 
 namespace PokemonCard.WebAPI.Controllers
 {
+    [Authorize]
+    [RoutePrefix("api/set")]
     public class PokemonSetController : ApiController
     {
         private SetService CreateSetService()
@@ -36,6 +38,8 @@ namespace PokemonCard.WebAPI.Controllers
 
             return Ok();
         }
+        [Route("{id}")]
+
         public IHttpActionResult Get(int setId)
         {
             SetService setservice = CreateSetService();

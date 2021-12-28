@@ -11,6 +11,7 @@ using System.Web.Http;
 namespace PokemonCard.WebAPI.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/ownership")]
     public class OwnershipController : ApiController
     {
         public IHttpActionResult Get()
@@ -32,12 +33,42 @@ namespace PokemonCard.WebAPI.Controllers
             }
             return Ok();
         }
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
             OwnershipService ownershipService = CreateOwnerService();
             var owner = ownershipService.GetOwnerByID(id);
             return Ok(owner);
         }
+        [Route("switchindeckstatus/{id}")]
+        public IHttpActionResult SwitchInDeck(int id)
+        {
+            OwnershipService ownershipService = CreateOwnerService();
+            var owner = ownershipService.SwitchInDeck(id);
+            return Ok(owner);
+        }
+        [Route("mydeck")]
+        public IHttpActionResult GetDeck()
+        {
+            OwnershipService ownershipService = CreateOwnerService();
+            var owner = ownershipService.GetDeck();
+            return Ok(owner);
+        }
+        [Route("mydeckdetails")]
+        public IHttpActionResult GetDeckDetails()
+        {
+            OwnershipService ownershipService = CreateOwnerService();
+            var owner = ownershipService.GetDeckDetails();
+            return Ok(owner);
+        }
+        [Route("mycards")]
+        public IHttpActionResult GetCards()
+        {
+            OwnershipService ownershipService = CreateOwnerService();
+            var owners = ownershipService.GetMyCards();
+            return Ok(owners);
+        }
+
         public IHttpActionResult Put(OwnershipEdit owner)
         {
             if (!ModelState.IsValid)

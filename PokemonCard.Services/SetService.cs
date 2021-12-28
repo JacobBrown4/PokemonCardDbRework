@@ -24,9 +24,9 @@ namespace PokemonCard.Services
                     NameOfSet = model.NameOfSet,
                     SetAbbr = model.SetAbbr,
                     YearReleased = model.YearReleased,
-                    Rares = model.Rares,
-                    Uncommons = model.Uncommons,
-                    Commons = model.Commons
+                    RareCount = model.RareCount,
+                    UncommonCount = model.UncommonCount,
+                    CommonCount = model.CommonCount
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -50,9 +50,7 @@ namespace PokemonCard.Services
                                     NameOfSet = e.NameOfSet,
                                     SetAbbr = e.SetAbbr,
                                     YearReleased = e.YearReleased,
-                                    Rares = e.Rares,
-                                    Uncommons = e.Uncommons,
-                                    Commons = e.Commons
+                                    TotalCards = e.RareCount + e.UncommonCount + e.CommonCount
 
                                 }
         );
@@ -75,9 +73,28 @@ namespace PokemonCard.Services
                         NameOfSet = entity.NameOfSet,
                         SetAbbr = entity.SetAbbr,
                         YearReleased = entity.YearReleased,
-                        Rares = entity.Rares,
-                        Uncommons = entity.Uncommons,
-                        Commons = entity.Commons
+                        RareCount = entity.RareCount,
+                        UncommonCount = entity.UncommonCount,
+                        CommonCount = entity.CommonCount,
+                        SetCardsInDb = entity.Cards.Count(),
+                        Rares = entity.Cards.Where(c => c.Rarity == Rarity.Rare).Select(x => new CardListItem()
+                        {
+                            Id = x.Id,
+                            Name = x.Name,
+                            CardType = x.TypeOfCard
+                        }).ToList(),
+                        Uncommons = entity.Cards.Where(c => c.Rarity == Rarity.Uncommon).Select(x => new CardListItem()
+                        {
+                            Id = x.Id,
+                            Name = x.Name,
+                            CardType = x.TypeOfCard
+                        }).ToList(),
+                        Commons = entity.Cards.Where(c => c.Rarity == Rarity.Common).Select(x => new CardListItem()
+                        {
+                            Id = x.Id,
+                            Name = x.Name,
+                            CardType = x.TypeOfCard
+                        }).ToList()
                     };
             }
         }
@@ -93,9 +110,9 @@ namespace PokemonCard.Services
                 entity.NameOfSet = model.NameOfSet;
                 entity.SetAbbr = model.SetAbbr;
                 entity.YearReleased = model.YearReleased;
-                entity.Rares = model.Rares;
-                entity.Uncommons = model.Uncommons;
-                entity.Commons = model.Uncommons;
+                entity.RareCount = model.RareCount;
+                entity.UncommonCount = model.UncommonCount;
+                entity.CommonCount = model.CommonCount;
 
                 return ctx.SaveChanges() == 1;
 
